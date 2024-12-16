@@ -11,6 +11,15 @@ The app follows the **Model-View-Controller (MVC)** architecture to ensure clean
 The app leverages:
 - **Retrofit**: For fetching exchange rate data from an external API.
 - **MPAndroidChart**: For displaying the historical trends in a line chart.
+- **Exchangerate.host API** : For fetching currency rate API
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8d44e2d0-f230-4254-8169-b4bd9bf7836a" width="30%" />
+  <img src="https://github.com/user-attachments/assets/1e9e6f90-e402-4d68-acb5-0e67618a9a37" width="30%" />
+  <img src="https://github.com/user-attachments/assets/09c0d992-5e49-40ed-b1dc-26bca731f914" width="30%" />
+</p>
+
+
 
 This project serves as a demonstration of clean architecture, third-party library integration, and API data visualization for mobile applications. It is developed as part of the **TymeX Challenge Round 2**.
 
