@@ -1,4 +1,10 @@
 # Currency Exchange Rate Viewer
+---
+
+**Challenge Round 2 Submission** - Developed by Hoàng Văn Tú - hoangtu4520031234@gmail.com for TymeX. 🌟
+
+---
+
 ##Link demo : https://drive.google.com/drive/u/0/folders/103Y_MCVplXhSeWyu1IVXB7KVyKjYJTFV ##
 ## A Brief App Overview
 The **Currency Exchange Rate Viewer** is a mobile application that allows users to:
@@ -103,10 +109,5 @@ Sync the project to download the required libraries.
 ## Quick Note:
 🚀 **Developed in just 1 day** for the TymeX Challenge Round 2!
 
----
-
-**Challenge Round 2 Submission** - Developed by Hoàng Văn Tú - hoangtu4520031234@gmail.com for TymeX. 🌟
-
----
 
 📈 📊 💡
