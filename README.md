@@ -3,7 +3,7 @@
 
 
 # Challenge 1 :
-# Currency Exchange Rate Viewer
+# Currency Converter 
 
 
 ##Link demo : https://drive.google.com/drive/u/0/folders/103Y_MCVplXhSeWyu1IVXB7KVyKjYJTFV ##
