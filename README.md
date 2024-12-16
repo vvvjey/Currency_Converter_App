@@ -1,8 +1,7 @@
----
 
 **Challenge Round 2 Submission** - Developed by Hoàng Văn Tú - hoangtu4520031234@gmail.com for TymeX. 🌟
 
----
+
 # Challenge 1 :
 # Currency Exchange Rate Viewer
 
