@@ -1,9 +1,11 @@
-# Currency Exchange Rate Viewer
 ---
 
 **Challenge Round 2 Submission** - Developed by Hoàng Văn Tú - hoangtu4520031234@gmail.com for TymeX. 🌟
 
 ---
+# Challenge 1 :
+# Currency Exchange Rate Viewer
+
 
 ##Link demo : https://drive.google.com/drive/u/0/folders/103Y_MCVplXhSeWyu1IVXB7KVyKjYJTFV ##
 ## A Brief App Overview
@@ -104,6 +106,13 @@ Sync the project to download the required libraries.
 - Implement caching for offline access.
 - Improve UI with animations and interactivity.
 - Add more visual chart types (e.g., bar chart, candlestick chart).
+
+# Challenge 2 : 
+## Question 2.1 :
+![image](https://github.com/user-attachments/assets/edadfc82-87ad-4615-bfc3-c99a5112462a)
+
+## Question 2.2 :
+![image](https://github.com/user-attachments/assets/ba193b9a-51cf-4939-9af7-7d7f41cc4450)
 
 
 ## Quick Note:
