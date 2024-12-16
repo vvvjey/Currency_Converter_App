@@ -13,6 +13,7 @@ import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
@@ -20,6 +21,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.currencyconverter.R
 import com.example.currencyconverter.controller.CurrencyViewModel
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.ValueFormatter
 import java.text.DecimalFormat
 import java.util.logging.Handler
 import java.util.logging.Logger
@@ -65,6 +72,9 @@ class MainActivity : AppCompatActivity() {
                     val currencyTextView: TextView = findViewById(R.id.currency1)
                     currencyTextView.text = selectedCurrency
                     updateExchangeRate(fromCurrency, toCurrency, viewModel.exchangeRates.value)
+                    viewModel.fetchHistoricalRatesForFiveYears(fromCurrency, toCurrency)
+
+
                 })
             })
 
@@ -75,6 +85,11 @@ class MainActivity : AppCompatActivity() {
                     val currencyTextView: TextView = findViewById(R.id.currency2)
                     currencyTextView.text = selectedCurrency
                     updateExchangeRate(fromCurrency, toCurrency, viewModel.exchangeRates.value)
+
+
+                    viewModel.fetchHistoricalRatesForFiveYears(fromCurrency, toCurrency)
+
+
 
 
                     val amountFromStr = inputAmountFrom.text.toString()
@@ -90,6 +105,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
             })
+        })
+        viewModel.historicalRates.observe(this, { rates ->
+            Log.d("DrawHistoricalRates", "Historical rates: $rates")
+            drawChart(rates,fromCurrency,toCurrency)
         })
 
 
@@ -183,7 +202,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun showErrorDialog(message: String) {
-        val dialog = androidx.appcompat.app.AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this)
             .setTitle("Convert Currency Error")
             .setMessage(message)
             .setPositiveButton("OK", null)
@@ -200,5 +219,57 @@ class MainActivity : AppCompatActivity() {
         val progressBar: ProgressBar = findViewById(R.id.progressBar)
         progressBar.visibility = View.GONE
     }
+    fun drawChart(rates: List<Double>, fromCurrency: String, toCurrency: String) {
+        val lineChart: LineChart = findViewById(R.id.lineChart)
+
+        val years = listOf("2019", "2020", "2021", "2022", "2023", "2024")
+
+        val reversedRates = rates.reversed()
+
+        val entries = mutableListOf<Entry>()
+        for (i in reversedRates.indices) {
+            entries.add(Entry(i.toFloat(), reversedRates[i].toFloat()))
+        }
+
+        val dataSet = LineDataSet(entries, "$fromCurrency to $toCurrency")
+        dataSet.color = resources.getColor(R.color.blue)
+
+        val lineData = LineData(dataSet)
+        lineChart.data = lineData
+
+        lineChart.xAxis.apply {
+            valueFormatter = object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    val index = value.toInt()
+                    return if (index in years.indices) {
+                        years[index]
+                    } else {
+                        ""
+                    }
+                }
+            }
+            position = XAxis.XAxisPosition.BOTTOM
+            granularity = 1f
+        }
+
+        lineChart.axisLeft.apply {
+            axisMinimum = 0f
+            setGranularityEnabled(true)
+
+            val maxRate = reversedRates.maxOrNull() ?: 0.0
+            val minRate = reversedRates.minOrNull() ?: 0.0
+            axisMaximum = (maxRate * 1.1).toFloat()
+            axisMinimum = (minRate * 0.9).toFloat()
+        }
+        lineChart.axisRight.isEnabled = false
+
+        lineChart.description.isEnabled = true
+        lineChart.description.text = "Historical Exchange Rate ($fromCurrency to $toCurrency) (2019 - 2024)"
+
+        lineChart.invalidate()
+    }
+
+
 
 }
+

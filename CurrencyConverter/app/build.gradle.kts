@@ -51,4 +51,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
     implementation("androidx.multidex:multidex:2.0.1")
 
+    implementation (libs.mpandroidchart)
+
 }

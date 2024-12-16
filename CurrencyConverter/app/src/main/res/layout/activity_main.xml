@@ -16,7 +16,8 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <ImageView
             android:id="@+id/iconMenu"
@@ -47,309 +48,330 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/inputContainer"
-
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/border_layout_layout_rounded_corner"
-        android:paddingBottom="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-
+        android:paddingBottom="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintWidth_percent="0.9">
+        app:layout_constraintWidth_percent="0.95"
 
-        <TextView
-            android:id="@+id/titleTest"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Enter your currency amount: "
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.90"
-            />
+        >
 
         <LinearLayout
-            android:id="@+id/InputAmount3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border_light_blue"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleTest"
-            app:layout_constraintWidth_percent="0.90">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
+                android:id="@+id/inputContainer"
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="4dp"
-                android:layout_weight="2">
+                android:layout_marginTop="32dp"
+                android:background="@drawable/border_layout_layout_rounded_corner"
+                android:paddingBottom="20dp"
+
+                app:layout_constraintWidth_percent="0.9">
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/titleTest"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="From"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/inputAmountFrom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="-8dp"
-                    android:background="@null"
-                    android:ems="12"
-                    android:inputType="number"
-                    android:paddingLeft="6dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="6dp"
-                    android:paddingBottom="10dp"
-                    android:text="100.00"
+                    android:layout_marginTop="16dp"
+                    android:text="Enter your currency amount: "
+                    android:textColor="#000000"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/currencySelectedFrom"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <View
-                    android:id="@+id/borderLeft"
-                    android:layout_width="2dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:background="#D3D3D3"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/currency1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="USD"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.90" />
+
+                <LinearLayout
+                    android:id="@+id/InputAmount3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/border_light_blue"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleTest"
+                    app:layout_constraintWidth_percent="0.90">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="2">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="From"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/inputAmountFrom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="-8dp"
+                            android:background="@null"
+                            android:ems="12"
+                            android:inputType="number"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="6dp"
+                            android:paddingBottom="10dp"
+                            android:text="100.00"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/currencySelectedFrom"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <View
+                            android:id="@+id/borderLeft"
+                            android:layout_width="2dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"
+                            android:background="#D3D3D3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/currency1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="USD"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/InputAmount3"
+                    app:layout_constraintWidth_percent="0.90"
+
+                    app:srcCompat="@drawable/vertical_arrow_2_direction2" />
+
+                <TextView
+                    android:id="@+id/abc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="Converted amount: "
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    app:layout_constraintWidth_percent="0.90"
 
                     />
+
+                <LinearLayout
+                    android:id="@+id/InputAmount2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/border_light_blue"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/abc"
+                    app:layout_constraintWidth_percent="0.90">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="2">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="To"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/inputAmountTo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="-8dp"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:ems="12"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:inputType="number"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="6dp"
+                            android:paddingBottom="10dp"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/currencySelectedTo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <View
+                            android:id="@+id/borderLeft"
+                            android:layout_width="2dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"
+                            android:background="#D3D3D3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/currency2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="USD"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputAmount3"
-            app:layout_constraintWidth_percent="0.90"
-
-            app:srcCompat="@drawable/vertical_arrow_2_direction2" />
-
-        <TextView
-            android:id="@+id/abc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Converted amount: "
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintWidth_percent="0.90"
-
-            />
-
-        <LinearLayout
-            android:id="@+id/InputAmount2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border_light_blue"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/abc"
-            app:layout_constraintWidth_percent="0.90">
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
+                android:id="@+id/rateContainer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="4dp"
-                android:layout_weight="2">
+                android:layout_marginTop="32dp"
+                android:background="@drawable/border_layout_layout_rounded_corner"
+                android:paddingBottom="28dp"
+                app:layout_constraintWidth_percent="0.90"
+                tools:visibility="visible">
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/abc"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="To"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/inputAmountTo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="-8dp"
-                    android:background="@null"
-                    android:clickable="false"
-                    android:ems="12"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:inputType="number"
-                    android:paddingLeft="6dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="6dp"
-                    android:paddingBottom="10dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Currency rate :"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/currencySelectedTo"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <View
-                    android:id="@+id/borderLeft"
-                    android:layout_width="2dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:background="#D3D3D3"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/currency2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="USD"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.90"
 
                     />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/abc"
+                    app:layout_constraintWidth_percent="0.90">
+
+                    <TextView
+                        android:id="@+id/exchangeRateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:text="1 USD = 1 USD"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+
+                        />
+
+                </LinearLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rateContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/border_layout_layout_rounded_corner"
-        android:paddingBottom="28dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputContainer"
-        app:layout_constraintWidth_percent="0.90">
-
-        <TextView
-            android:id="@+id/abc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Currency rate :"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.90"
-
-            />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/abc"
-            app:layout_constraintWidth_percent="0.90">
-
-            <TextView
-                android:id="@+id/exchangeRateText"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/buttonConvert"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:text="1 USD = 1 USD"
-                android:textColor="#000000"
-                android:textSize="16sp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/button_convert_background"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Convert"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:layout_constraintWidth_percent="0.90" />
 
-                />
 
         </LinearLayout>
+    </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <ProgressBar
         android:id="@+id/progressBar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:indeterminateDrawable="@drawable/circular_gradient"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:id="@+id/buttonConvert"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/button_convert_background"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:text="Convert"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rateContainer"
-        app:layout_constraintWidth_percent="0.90" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

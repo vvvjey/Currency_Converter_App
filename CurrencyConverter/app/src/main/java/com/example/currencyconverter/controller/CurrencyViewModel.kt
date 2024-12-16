@@ -1,11 +1,19 @@
 package com.example.currencyconverter.controller
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.currencyconverter.model.ApiClient
+import com.example.currencyconverter.model.HistoricalApiClient
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class CurrencyViewModel : ViewModel() {
     private val _exchangeRates = MutableLiveData<Map<String, Double>>()
@@ -18,6 +26,10 @@ class CurrencyViewModel : ViewModel() {
 
 
     private val apiClient = ApiClient.create()
+    private val historicalApiClient = HistoricalApiClient.create()
+
+    private val _historicalRates = MutableLiveData<List<Double>>()
+    val historicalRates: LiveData<List<Double>> get() = _historicalRates
 
     fun fetchExchangeRates() {
         viewModelScope.launch {
@@ -39,4 +51,43 @@ class CurrencyViewModel : ViewModel() {
         val toRate = rates[to] ?: 1.0
         return toRate / fromRate
     }
+    fun fetchHistoricalRatesForFiveYears(fromCurrency: String, toCurrency: String) {
+        viewModelScope.launch {
+            try {
+                val calendar = Calendar.getInstance()
+                val currentYear = calendar.get(Calendar.YEAR)
+                val historicalRatesList = mutableListOf<Double>()
+
+                // Lặp qua 5 năm gần nhất
+                for (i in 0..4) {
+                    calendar.set(Calendar.YEAR, currentYear - i)
+                    val date = SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
+
+                    val response = withContext(Dispatchers.IO) {
+                        historicalApiClient.getHistoricalRates(
+                            accessKey = "bf4eb89984cd889121d19d363df9f002",
+                            date = date,
+                            currencies = toCurrency,
+                            source = fromCurrency
+                        )
+                    }
+
+                    if (response.success) {
+                        val rate = response.quotes["$fromCurrency$toCurrency"]
+                        if (rate != null) {
+                            historicalRatesList.add(rate)
+                        }
+                    } else {
+                        Log.e("HistoricalRates", "Failed to fetch rates for year: $date")
+                    }
+                }
+
+                _historicalRates.value = historicalRatesList
+
+            } catch (e: Exception) {
+                Log.e("HistoricalRatesError", "Error: ${e.message}")
+            }
+        }
+    }
+
 }
